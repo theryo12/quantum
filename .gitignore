@@ -1,0 +1,29 @@
+# Ignore build directories
+build/
+bin/
+
+# Ignore temporary files
+*.log
+*.tmp
+*.swp
+
+# Ignore libraries and binaries
+lib/
+*.o
+*.so
+*.dll
+*.exe
+
+# Ignore compiled Python/Lua files (if any)
+*.pyc
+*.pyo
+*.luac
+
+# Ignore editor/IDE files
+.vscode/
+.idea/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
