@@ -14,11 +14,6 @@ lib/
 *.dll
 *.exe
 
-# Ignore compiled Python/Lua files (if any)
-*.pyc
-*.pyo
-*.luac
-
 # Ignore editor/IDE files
 .vscode/
 .idea/
