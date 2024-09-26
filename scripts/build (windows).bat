@@ -14,8 +14,8 @@ cmake .. -G "MinGW Makefiles"
 mingw32-make
 
 if %errorlevel% == 0 (
-    echo Сборка завершена успешно!
+    echo Success!
 ) else (
-    echo Ошибка при сборке!
+    echo Error!
     exit /b 1
 )
