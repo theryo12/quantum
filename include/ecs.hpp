@@ -9,7 +9,7 @@ using Entity = std::uint32_t;
 
 class EntityManager {
 public:
-    Entity createEntity();
+    auto createEntity() -> Entity;
     void destroyEntity(Entity entity);
 
 private:
@@ -25,7 +25,7 @@ public:
         components[entity] = std::move(component);
     }
 
-    Component& getComponent(Entity entity) {
+    auto getComponent(Entity entity) -> Component& {
         assert(components.find(entity) != components.end() && "Component not found!");
         return components[entity];
     }
@@ -34,7 +34,7 @@ public:
         components.erase(entity);
     }
 
-    bool hasComponent(Entity entity) const {
+    [[nodiscard]] auto hasComponent(Entity entity) const -> bool {
         return components.find(entity) != components.end();
     }
 
@@ -52,7 +52,7 @@ private:
 // ECS class
 class ECS {
 public:
-    Entity createEntity() {
+    auto createEntity() -> Entity {
         return entityManager.createEntity();
     }
 
@@ -68,13 +68,13 @@ public:
 
     // Template function to retrieve components
     template <typename Component>
-    Component& getComponent(Entity entity) {
+    auto getComponent(Entity entity) -> Component& {
         return getComponentArray<Component>().getComponent(entity);
     }
 
     // Template function to check for components
     template <typename Component>
-    bool hasComponent(Entity entity) {
+    auto hasComponent(Entity entity) -> bool {
         return getComponentArray<Component>().hasComponent(entity);
     }
 
@@ -94,7 +94,7 @@ private:
     EntityManager entityManager;
 
     template <typename Component>
-    ComponentArray<Component>& getComponentArray() {
+    auto getComponentArray() -> ComponentArray<Component>& {
         static ComponentArray<Component> array;
         return array;
     }

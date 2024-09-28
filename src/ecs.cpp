@@ -1,11 +1,9 @@
 #include "../include/ecs.hpp"
-#include "../include/utils.hpp"
 
 #include <cassert>
 
 // EntityManager implementation
-Entity EntityManager::createEntity() {
-    LOG_DEBUG("creating new entity");
+auto EntityManager::createEntity() -> Entity {
     if (!avaliableEntities.empty()) {
         Entity id = avaliableEntities.back();
         avaliableEntities.pop_back();

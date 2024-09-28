@@ -1,0 +1,7 @@
+---
+Checks: '-*,clang-analyzer-*,modernize-*,performance-*'
+WarningsAsErrors: 'clang-analyzer-*'
+HeaderFilterRegex: 'src/.*'
+AnalyzeTemporaryDtors: false
+FormatStyle: file
+---

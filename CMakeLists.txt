@@ -1,11 +1,22 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.21)
 
-project(quantum)
+project(quantum LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_BUILD_TYPE Debug)
+
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-file(GLOB_RECURSE SOURCES src/*.cpp)
+file(GLOB_RECURSE CPP_SOURCES src/*.cpp)
+file(GLOB_RECURSE IXX_SOURCES src/*.ixx)
+
+find_program(CLANG_TIDY_EXE NAMES clang-tidy)
+
+if(CLANG_TIDY_EXE)
+    message(STATUS "Found clang-tidy: ${CLANG_TIDY_EXE}")
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE};--fix")
+endif()
+
 
 include_directories(include)
 
@@ -21,7 +32,7 @@ else()
     set(SFML_LIBS sfml-system sfml-window sfml-graphics sfml-audio sfml-network)
 endif()
 
-add_executable(quantum ${SOURCES})
+add_executable(quantum ${CPP_SOURCES} ${IXX_SOURCES})
 
 target_link_libraries(quantum ${SFML_LIBS})
 
