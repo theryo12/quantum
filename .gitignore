@@ -1,0 +1,23 @@
+# ignore build directories
+build/
+bin/
+
+# ignore temporary files
+*.log
+*.tmp
+*.swp
+
+# ignore libraries and binaries
+lib/
+*.o
+*.so
+*.dll
+*.exe
+
+# ignore editor/IDE files
+.vscode/
+.idea/
+
+# ignore system files
+.DS_Store
+Thumbs.db
